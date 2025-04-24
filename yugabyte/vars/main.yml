@@ -1,0 +1,30 @@
+# vars.yml for Yugabyte setup
+
+# Versioning
+yugabyte_version: "2024.2.2.2"
+
+# User configuration
+yugabyte_user: "yugabyte"
+
+# Home & Installation Directories
+yugabyte_home: "/home/{{ yugabyte_user }}/yugabyte-{{ yugabyte_version }}"
+yugabyte_bin: "{{ yugabyte_home }}/bin"
+yugabyte_data_dir: "/home/{{ yugabyte_user }}/var"
+yb_data_dir: "/home/{{ yugabyte_user }}/yb_data"  # Used for manual directory creation
+
+# URL and download details
+yugabyte_tarball_url: "https://software.yugabyte.com/releases/{{ yugabyte_version }}/yugabyte-{{ yugabyte_version }}-b2-linux-x86_64.tar.gz"
+yb_url: "{{ yugabyte_tarball_url }}"
+yb_home_dir: "/home/{{ yugabyte_user }}"
+yb_version: "{{ yugabyte_version }}"
+yb_install_dir: "{{ yb_home_dir }}/yugabyte-{{ yb_version }}"
+
+# Post-install script
+yugabyte_post_install_script: "{{ yugabyte_bin }}/post_install.sh"
+
+# Service and system configuration
+yugabyte_service_file: "/etc/systemd/system/yugabyted.service"
+grub_config_file: "/etc/default/grub"
+grub_line: 'GRUB_CMDLINE_LINUX="transparent_hugepage=always"'
+
+

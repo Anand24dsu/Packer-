@@ -1,0 +1,15 @@
+---
+# handlers file for yugabyte
+
+- name: Reload systemd
+  command: systemctl daemon-reexec && systemctl daemon-reload
+
+# handlers/main.yml
+- name: Generate grub configuration
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
+  notify: Reboot system
+
+- name: Reboot system
+  reboot:
+    msg: "System rebooting to apply kernel and limits changes"
+    reboot_timeout: 300
