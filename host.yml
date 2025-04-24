@@ -1,0 +1,7 @@
+---
+- name: Configure YugabyteDB system
+  hosts: localhost
+  become: true
+  roles:
+    - yugabyte
+ 
